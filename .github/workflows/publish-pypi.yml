@@ -1,0 +1,34 @@
+name: Publish eggwrap to PyPI
+
+on: push
+
+jobs:
+  build:
+    name: Build eggwrap
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checking out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        name: Setup rust toolchain
+
+      - name: Install pypa/build and maturin
+        run: >-
+          python3 -m
+          pip install
+          build maturin
+          --user
+
+      - name: Build with maturin
+        uses: PyO3/maturin-action@v1
+        with:
+          command: build
+          args: --release
+
