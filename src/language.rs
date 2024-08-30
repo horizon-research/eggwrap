@@ -521,10 +521,10 @@ pub fn rules<A: Analysis<TnsrLang>>() -> Vec<Rewrite<TnsrLang, TnsrAnalysis>> { 
     // rewrite!("div-mul-comm-r"; "(Div (Mul ?x ?y) ?z)" => "(Mul ?x (Div ?y ?z))"),
 ]}
 
-struct FMulApplier {
-    foo: Var,
-    bar: Var,
-}
+// struct FMulApplier {
+//     foo: Var,
+//     bar: Var,
+// }
 
 impl Applier<TnsrLang, TnsrAnalysis> for FMulApplier {
     fn apply_one(&self, egraph: &mut EGraph<TnsrLang, TnsrAnalysis>, matched_id: Id, subst: &Subst, _: Option<&PatternAst<TnsrLang>>, _: Symbol) -> Vec<Id> {
@@ -541,10 +541,10 @@ impl Applier<TnsrLang, TnsrAnalysis> for FMulApplier {
     }
 }
 
-struct FAddApplier {
-    foo: Var,
-    bar: Var,
-}
+// struct FAddApplier {
+//     foo: Var,
+//     bar: Var,
+// }
 
 impl Applier<TnsrLang, TnsrAnalysis> for FAddApplier {
     fn apply_one(&self, egraph: &mut EGraph<TnsrLang, TnsrAnalysis>, matched_id: Id, subst: &Subst, _: Option<&PatternAst<TnsrLang>>, _: Symbol) -> Vec<Id> {

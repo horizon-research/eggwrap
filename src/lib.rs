@@ -34,7 +34,7 @@ fn lp_optimize(program: String, n_sec: i32) -> String {
                     .with_expr(&program_expr);
     let runner = runner.run(&rules::<TnsrAnalysis>());
 
-    let num_iter_sat = runner.iterations.len() - 1;
+    // let num_iter_sat = runner.iterations.len() - 1;
 
     // Print equality saturation stats
     // COMMENT THIS OUT LATER
@@ -67,21 +67,21 @@ fn eggwrap(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     Ok(())
 }
 
-fn get_stats(egraph: &EGraph<TnsrLang, TnsrAnalysis>) -> (usize, usize, f32, usize, f32) {
-    let num_enodes = egraph.total_size();
-    let num_classes = egraph.number_of_classes();
-    let avg_nodes_per_class = num_enodes as f32 / (num_classes as f32);
-    let num_edges = egraph
-        .classes()
-        .fold(0, |acc, c| c.iter().fold(0, |sum, n| n.len() + sum) + acc);
-    let num_programs = egraph
-        .classes()
-        .fold(0.0, |acc, c| acc + (c.len() as f32).log2());
-    (
-        num_enodes,
-        num_classes,
-        avg_nodes_per_class,
-        num_edges,
-        num_programs,
-    )
-}
+// fn get_stats(egraph: &EGraph<TnsrLang, TnsrAnalysis>) -> (usize, usize, f32, usize, f32) {
+//     let num_enodes = egraph.total_size();
+//     let num_classes = egraph.number_of_classes();
+//     let avg_nodes_per_class = num_enodes as f32 / (num_classes as f32);
+//     let num_edges = egraph
+//         .classes()
+//         .fold(0, |acc, c| c.iter().fold(0, |sum, n| n.len() + sum) + acc);
+//     let num_programs = egraph
+//         .classes()
+//         .fold(0.0, |acc, c| acc + (c.len() as f32).log2());
+//     (
+//         num_enodes,
+//         num_classes,
+//         avg_nodes_per_class,
+//         num_edges,
+//         num_programs,
+//     )
+// }
