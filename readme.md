@@ -10,6 +10,7 @@ Please refer to the GitHub page for [onneggs](https://github.com/horizon-researc
 eggwrap depends on [CBC](https://github.com/coin-or/Cbc).
 Please install CBC prior to installing eggwrap!
 Please note that we currently only support Linux for eggwrap!
+Additionally, only Python versions 3.10+ are supported.
 
 ### PyPI
 eggwrap is available on PyPI!
