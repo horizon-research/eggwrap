@@ -17,14 +17,14 @@ eggwrap is available on PyPI!
 pip install eggwrap
 ```
 
-### Building from source
-In order to build eggwrap from source, follow these commands:
+### Building from source on Linux
+In order to build eggwrap from source, follow these commands.
 
 ```
 git clone https://github.com/horizon-research/eggwrap.git
 cd eggwrap
 python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 python3 -m maturin develop
 ```
-
