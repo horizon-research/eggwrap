@@ -10,7 +10,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
-poetry="readme.md"
+readme="readme.md"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
