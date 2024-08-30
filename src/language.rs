@@ -525,41 +525,41 @@ pub fn rules<A: Analysis<TnsrLang>>() -> Vec<Rewrite<TnsrLang, TnsrAnalysis>> { 
 //     foo: Var,
 //     bar: Var,
 // }
-
-impl Applier<TnsrLang, TnsrAnalysis> for FMulApplier {
-    fn apply_one(&self, egraph: &mut EGraph<TnsrLang, TnsrAnalysis>, matched_id: Id, subst: &Subst, _: Option<&PatternAst<TnsrLang>>, _: Symbol) -> Vec<Id> {
-        let foo_scalar = egraph[subst[self.foo]].data.scalar;
-        let bar_scalar = egraph[subst[self.bar]].data.scalar;
-        let new_scalar = foo_scalar * bar_scalar;
-        let new_var = egraph.add(TnsrLang::Var(new_scalar.to_string().into()));
-        let new_node = egraph.add(TnsrLang::Input([new_var]));
-        if egraph.union(new_node, matched_id) {
-            vec![new_node, matched_id]
-        } else {
-            vec![]
-        }
-    }
-}
-
+//
+// impl Applier<TnsrLang, TnsrAnalysis> for FMulApplier {
+//     fn apply_one(&self, egraph: &mut EGraph<TnsrLang, TnsrAnalysis>, matched_id: Id, subst: &Subst, _: Option<&PatternAst<TnsrLang>>, _: Symbol) -> Vec<Id> {
+//         let foo_scalar = egraph[subst[self.foo]].data.scalar;
+//         let bar_scalar = egraph[subst[self.bar]].data.scalar;
+//         let new_scalar = foo_scalar * bar_scalar;
+//         let new_var = egraph.add(TnsrLang::Var(new_scalar.to_string().into()));
+//         let new_node = egraph.add(TnsrLang::Input([new_var]));
+//         if egraph.union(new_node, matched_id) {
+//             vec![new_node, matched_id]
+//         } else {
+//             vec![]
+//         }
+//     }
+// }
+//
 // struct FAddApplier {
 //     foo: Var,
 //     bar: Var,
 // }
-
-impl Applier<TnsrLang, TnsrAnalysis> for FAddApplier {
-    fn apply_one(&self, egraph: &mut EGraph<TnsrLang, TnsrAnalysis>, matched_id: Id, subst: &Subst, _: Option<&PatternAst<TnsrLang>>, _: Symbol) -> Vec<Id> {
-        let foo_scalar = egraph[subst[self.foo]].data.scalar;
-        let bar_scalar = egraph[subst[self.bar]].data.scalar;
-        let new_scalar = foo_scalar + bar_scalar;
-        let new_var = egraph.add(TnsrLang::Var(new_scalar.to_string().into()));
-        let new_node = egraph.add(TnsrLang::Input([new_var]));
-        if egraph.union(new_node, matched_id) {
-            vec![new_node, matched_id]
-        } else {
-            vec![]
-        }
-    }
-}
+//
+// impl Applier<TnsrLang, TnsrAnalysis> for FAddApplier {
+//     fn apply_one(&self, egraph: &mut EGraph<TnsrLang, TnsrAnalysis>, matched_id: Id, subst: &Subst, _: Option<&PatternAst<TnsrLang>>, _: Symbol) -> Vec<Id> {
+//         let foo_scalar = egraph[subst[self.foo]].data.scalar;
+//         let bar_scalar = egraph[subst[self.bar]].data.scalar;
+//         let new_scalar = foo_scalar + bar_scalar;
+//         let new_var = egraph.add(TnsrLang::Var(new_scalar.to_string().into()));
+//         let new_node = egraph.add(TnsrLang::Input([new_var]));
+//         if egraph.union(new_node, matched_id) {
+//             vec![new_node, matched_id]
+//         } else {
+//             vec![]
+//         }
+//     }
+// }
 
 pub struct TnsrCost<'a> {
     pub egraph: &'a EGraph<TnsrLang, TnsrAnalysis>,
