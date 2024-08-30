@@ -26,6 +26,9 @@ jobs:
           build maturin
           --user
 
+      - name: Install CBC Solver
+        run: sudo apt-get install -y coinor-cbc coinor-libcbc-dev
+
       - name: Build with maturin
         uses: PyO3/maturin-action@v1
         with:

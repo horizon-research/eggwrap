@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub mod language;
 use egg::*;
 use crate::language::*;
